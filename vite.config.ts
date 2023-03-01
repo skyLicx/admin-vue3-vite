@@ -25,5 +25,15 @@ export default defineConfig({
       }
     ],
     extensions: ['.ts', '.js']
+  },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://xxx.com', // 服务器地址
+        ws: true,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
   }
 })
