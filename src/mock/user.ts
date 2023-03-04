@@ -9,7 +9,7 @@ export default Mock.mock(new RegExp('/mock/user/menu'), 'post', () => {
       component: 'Layout',
       meta: {
         locale: '系统数据',
-        icon: 'icon-list'
+        icon: 'House'
       },
       children: [
         {
@@ -46,7 +46,7 @@ export default Mock.mock(new RegExp('/mock/user/menu'), 'post', () => {
       component: 'Layout',
       meta: {
         locale: '小程序',
-        icon: 'icon-list'
+        icon: 'House'
         // isAlwaysShow: true
       },
       children: [
@@ -55,8 +55,7 @@ export default Mock.mock(new RegExp('/mock/user/menu'), 'post', () => {
           name: 'publishPost',
           component: '/wechatApp/publishPost/index',
           meta: {
-            locale: '发布帖子',
-            icon: 'icon-list'
+            locale: '发布帖子'
           }
         }
       ]

@@ -7,7 +7,8 @@ const TESTPAGE: AppRouteRecordRaw = {
   component: DEFAULT_LAYOUT,
   meta: {
     locale: 'level1',
-    isAlwaysShow: true
+    isAlwaysShow: true,
+    icon: 'List'
   },
   children: [
     {
