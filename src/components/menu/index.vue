@@ -1,17 +1,17 @@
 <script lang="tsx">
-  import { defineComponent, ref, h, compile, watch } from 'vue'
+  import { defineComponent, ref, h, compile, watch, computed } from 'vue'
   import { useRouter, RouteRecordRaw } from 'vue-router'
   import { openWindow, regexUrl } from '@/utils'
+  import useAppStore from '@/store/modules/app'
   import useMenuTree from './useMenuTree'
 
   export default defineComponent({
     emit: ['collapse'],
     setup() {
+      const appStore = useAppStore()
       const router = useRouter()
-      // const collapsed = ref(true)
       // 选中项
       const selectedKey = ref<string>('')
-
       // 路由菜单
       const { menuTree } = useMenuTree()
 
@@ -27,6 +27,8 @@
           name: item.name
         })
       }
+      // 侧边菜单栏折叠状态
+      const collapsed = computed(() => appStore.getCollapsed)
 
       watch(
         () => router.currentRoute.value,
@@ -51,9 +53,9 @@
                 h(
                   compile(
                     `
-                      ${icon}
-                      <span>${element?.meta?.locale || ''}</span>
-                    `
+                        ${icon}
+                        <span>${element?.meta?.locale || ''}</span>
+                      `
                   )
                 )
               // 有children渲染一级菜单 没有就渲染子菜单
@@ -70,9 +72,19 @@
                 ) : (
                   <el-menu-item
                     index={element?.name}
-                    v-slots={{ title }}
+                    v-slots={{
+                      title: () => h(compile(element?.meta?.locale || ''))
+                    }}
                     onClick={() => goto(element)}
-                  ></el-menu-item>
+                  >
+                    {element?.meta?.icon ? (
+                      <el-icon>
+                        <setting />
+                      </el-icon>
+                    ) : (
+                      ''
+                    )}
+                  </el-menu-item>
                 )
               nodes.push(node as never)
             })
@@ -82,10 +94,25 @@
         return travel(menuTree.value)
       }
       return () => (
-        <el-menu style="height: 100%" default-active={selectedKey.value}>
+        <el-menu
+          style="--el-menu-bg-color: #33363D;--el-menu-text-color: #C8C8C8;--el-menu-active-color: #fff;--el-menu-hover-bg-color: #3F4247;"
+          default-active={selectedKey.value}
+          collapse={collapsed.value}
+        >
           {renderSubMenu()}
         </el-menu>
       )
     }
   })
 </script>
+
+<style lang="scss" scoped>
+  .el-menu:not(.el-menu--collapse) {
+    width: 200px;
+  }
+  .el-menu--vertical {
+    .el-menu-item.is-active {
+      background-color: #3f4247;
+    }
+  }
+</style>

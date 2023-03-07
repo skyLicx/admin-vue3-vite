@@ -24,8 +24,7 @@ const TESTPAGE: AppRouteRecordRaw = {
           name: 'level3-1',
           component: () => import('@/views/testPage/index2.vue'),
           meta: {
-            locale: 'level3-1',
-            noAffix: true
+            locale: 'level3-1'
           }
         }
       ]

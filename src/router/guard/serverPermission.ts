@@ -6,13 +6,12 @@ const routeAllPathToCompMap = import.meta.glob('/src/views/**/*.vue')
 
 export default function setupServerPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
-    console.log(to, 'xxx')
     // 获取后端权限路由
-    const appStore = usePermissionStore()
+    const permissionStore = usePermissionStore()
     // 已经登录并且还没有获取动态路由数据则重新获取
-    if (localStorage.getItem('token') && !appStore.getRouters.length) {
+    if (localStorage.getItem('token') && !permissionStore.getRouters.length) {
       // 从服务端获取路由
-      await appStore.getServerMenuConfig()
+      await permissionStore.getServerMenuConfig()
       // 处理数据 组成路由
       const filterASyncRoutes = (data) => {
         const routes = data.map((item) => {
@@ -31,15 +30,13 @@ export default function setupServerPermissionGuard(router: Router) {
         })
         return routes
       }
-      const routes: any = filterASyncRoutes(appStore.getRouters)
+      const routes: any = filterASyncRoutes(permissionStore.getRouters)
       // 添加路由
       routes.forEach((item) => {
         router.addRoute(item)
       })
-      console.log(22)
       next({ ...to, replace: true })
     } else {
-      console.log(11)
       next()
     }
   })

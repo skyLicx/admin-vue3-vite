@@ -1,13 +1,19 @@
 <template>
   <el-container class="layout">
-    <el-aside width="200px">
-      <div class="menu-wrapper">
+    <el-aside class="layout-sider">
+      <el-scrollbar>
         <Menu />
-      </div>
+      </el-scrollbar>
     </el-aside>
     <el-container>
+      <el-header class="layout-header">
+        <NavBar />
+        <TabBar />
+      </el-header>
       <el-main class="layout-main">
-        <PageLayout />
+        <el-scrollbar>
+          <PageLayout />
+        </el-scrollbar>
       </el-main>
     </el-container>
   </el-container>
@@ -15,41 +21,31 @@
 
 <script lang="ts" setup>
   import Menu from '@/components/menu/index.vue'
+  import NavBar from '@/components/navbar/index.vue'
+  import TabBar from '@/components/tab-bar/index.vue'
   import PageLayout from './page-layout.vue'
 </script>
 
 <style lang="scss" scoped>
   .layout {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     position: relative;
-  }
-  .menu-wrapper {
-    height: 100%;
-    overflow: auto;
-    overflow-x: hidden;
-    // :deep(.arco-menu) {
-    //   ::-webkit-scrollbar {
-    //     width: 12px;
-    //     height: 4px;
-    //   }
-
-    //   ::-webkit-scrollbar-thumb {
-    //     border: 4px solid transparent;
-    //     background-clip: padding-box;
-    //     border-radius: 7px;
-    //     background-color: var(--color-text-4);
-    //   }
-
-    //   ::-webkit-scrollbar-thumb:hover {
-    //     background-color: var(--color-text-3);
-    //   }
-    // }
-  }
-  .layout-main {
-    min-height: 100vh;
-    overflow-y: hidden;
-    background-color: rgb(185, 240, 231);
-    transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+    .layout-sider {
+      width: auto;
+      background-color: #33363d;
+    }
+    .el-menu {
+      border-right: none;
+    }
+    .layout-header {
+      padding: 0;
+      height: auto;
+    }
+    .layout-main {
+      padding: 10px;
+      background-color: $bg;
+      transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+    }
   }
 </style>

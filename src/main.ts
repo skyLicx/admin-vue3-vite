@@ -1,4 +1,6 @@
 import { createApp } from 'vue'
+// 引入公共样式
+import '@/styles/reset.scss'
 // 引入ElementPlus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'

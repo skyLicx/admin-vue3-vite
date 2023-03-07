@@ -5,12 +5,12 @@ import { cloneDeep } from 'lodash'
 import appClientMenus from '@/router/appMenus'
 
 export default function useMenuTree() {
-  const appStore = usePermissionStore()
+  const permissionStore = usePermissionStore()
   // 路由
   const appRoute = computed(() => {
     // 服务端数据
-    // return appStore.getRouters
-    return appClientMenus.concat(appStore.getRouters)
+    // return permissionStore.getRouters
+    return appClientMenus.concat(permissionStore.getRouters)
   })
   // 侧边栏菜单
   const menuTree = computed(() => {
