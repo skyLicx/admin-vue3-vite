@@ -5,22 +5,34 @@
       <el-icon v-else @click="onFold"><Fold /></el-icon>
     </div>
     <div class="tool">
-      <el-icon
-        class="refresh"
-        :class="isload ? 'isload' : ''"
-        @click="onRefresh"
-      >
-        <Refresh />
-      </el-icon>
+      <el-tooltip effect="dark" content="刷新" placement="bottom">
+        <el-icon
+          class="refresh"
+          :class="isload ? 'isload' : ''"
+          @click="onRefresh"
+        >
+          <Refresh />
+        </el-icon>
+      </el-tooltip>
+      <el-tooltip effect="dark" content="退出" placement="bottom">
+        <img
+          class="icon-logout"
+          src="@/assets/images/logout.png"
+          alt=""
+          @click="logout"
+        />
+      </el-tooltip>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-  import useAppStore from '@/store/modules/app'
+  import router from '@/router'
+  import { useAppStore, useUserStore } from '@/store'
   import { computed, nextTick, ref } from 'vue'
 
   const appStore = useAppStore()
+  const userStore = useUserStore()
 
   const collapsed = computed(() => appStore.getCollapsed)
   // 折叠侧边栏
@@ -43,6 +55,11 @@
       }, 500)
     })
   }
+  // 退出
+  const logout = async () => {
+    await userStore.logout()
+    router.push({ name: 'login' })
+  }
 </script>
 
 <style lang="scss" scoped>
@@ -59,6 +76,10 @@
     margin-left: auto;
     .refresh.isload {
       animation: load 0.5s linear infinite;
+    }
+    .icon-logout {
+      width: 16px;
+      margin: 0 10px;
     }
   }
   @keyframes load {

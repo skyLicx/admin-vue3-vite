@@ -18,11 +18,14 @@ const usePermissionStore = defineStore({
     async getServerMenuConfig() {
       try {
         const { data } = await getMenuList()
-        this.serverMenu = data
+        this.serverMenu = data.menuList
         return Promise.resolve(data)
       } catch (error) {
         return Promise.reject(error)
       }
+    },
+    clearServerMenu() {
+      this.serverMenu = []
     }
   }
 })

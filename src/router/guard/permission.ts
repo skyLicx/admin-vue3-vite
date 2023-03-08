@@ -1,8 +1,9 @@
+import { isLogin } from '@/utils/auth'
 import type { Router } from 'vue-router'
 
 export default function setupPermissionGuard(router: Router) {
   router.beforeEach(async (to, from, next) => {
-    if (localStorage.getItem('token')) {
+    if (isLogin()) {
       next()
     } else {
       // 如果不存在token 则跳转到登录页

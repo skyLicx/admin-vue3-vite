@@ -110,7 +110,7 @@
   .el-menu:not(.el-menu--collapse) {
     width: 200px;
   }
-  .el-menu--vertical {
+  .el-menu:not(.el-menu--popup) {
     .el-menu-item.is-active {
       background-color: #3f4247;
     }
