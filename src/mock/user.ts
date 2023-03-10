@@ -46,9 +46,7 @@ setupMock({
               name: 'BaseData',
               component: '/systemData/baseData/index',
               meta: {
-                locale: '基础数据',
-                // 不缓存路由
-                ignoreCache: true
+                locale: '基础数据'
               }
             },
             {
@@ -64,7 +62,9 @@ setupMock({
               name: 'Categorize',
               component: '/systemData/categorize/index',
               meta: {
-                locale: '模板分类'
+                locale: '模板分类',
+                // 不缓存路由
+                ignoreCache: true
               }
             }
           ]

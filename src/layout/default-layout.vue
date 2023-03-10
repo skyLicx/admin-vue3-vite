@@ -12,7 +12,9 @@
       </el-header>
       <el-main class="layout-main">
         <el-scrollbar>
-          <PageLayout />
+          <section class="app-main">
+            <PageLayout />
+          </section>
         </el-scrollbar>
       </el-main>
     </el-container>
@@ -43,9 +45,11 @@
       height: auto;
     }
     .layout-main {
-      padding: 10px;
+      padding: 0;
       background-color: $bg;
-      transition: padding 0.2s cubic-bezier(0.34, 0.69, 0.1, 1);
+    }
+    .app-main {
+      padding: 20px;
     }
   }
 </style>

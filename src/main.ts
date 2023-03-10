@@ -6,6 +6,7 @@ import '@/styles/transition.scss'
 // 引入ElementPlus
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import '@/styles/elReset.scss'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
 // 引入路由
 import router from './router'

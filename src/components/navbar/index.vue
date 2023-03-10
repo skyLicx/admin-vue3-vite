@@ -6,11 +6,7 @@
     </div>
     <div class="tool">
       <el-tooltip effect="dark" content="刷新" placement="bottom">
-        <el-icon
-          class="refresh"
-          :class="isload ? 'isload' : ''"
-          @click="onRefresh"
-        >
+        <el-icon class="refresh" @click="onRefresh">
           <Refresh />
         </el-icon>
       </el-tooltip>
@@ -29,7 +25,7 @@
 <script lang="ts" setup>
   import router from '@/router'
   import { useAppStore, useUserStore } from '@/store'
-  import { computed, nextTick, ref } from 'vue'
+  import { computed, nextTick } from 'vue'
 
   const appStore = useAppStore()
   const userStore = useUserStore()
@@ -43,16 +39,11 @@
   const onExpand = () => {
     appStore.toggleCollapsed(false)
   }
-  const isload = ref(false)
   // 刷新当前页
   const onRefresh = () => {
     appStore.changeRouterAlive(false)
-    isload.value = true
     nextTick(() => {
       appStore.changeRouterAlive(true)
-      setTimeout(() => {
-        isload.value = false
-      }, 500)
     })
   }
   // 退出
@@ -74,9 +65,6 @@
   }
   .tool {
     margin-left: auto;
-    .refresh.isload {
-      animation: load 0.5s linear infinite;
-    }
     .icon-logout {
       width: 16px;
       margin: 0 10px;
