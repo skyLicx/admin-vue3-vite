@@ -5,12 +5,22 @@
 </template>
 
 <script setup lang="ts">
-  import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
-  import en from 'element-plus/dist/locale/en.mjs'
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
+  import zhCN from 'element-plus/dist/locale/zh-cn.mjs'
+  import enUS from 'element-plus/dist/locale/en.mjs'
+  import useLocale from '@/hooks/locale'
 
-  const language = ref('zh-cn')
-  const locale = computed(() => (language.value === 'zh-cn' ? zhCn : en))
+  const { currentLocale } = useLocale()
+  const locale = computed(() => {
+    switch (currentLocale.value) {
+      case 'zh-CN':
+        return zhCN
+      case 'en-US':
+        return enUS
+      default:
+        return enUS
+    }
+  })
 </script>
 
 <style lang="scss"></style>

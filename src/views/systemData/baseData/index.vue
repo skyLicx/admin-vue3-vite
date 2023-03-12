@@ -149,7 +149,7 @@
       name: '',
       contentType: '',
       filterType: '',
-      createdTime: [],
+      createdTime: '',
       status: ''
     }
   }
@@ -158,7 +158,8 @@
   const formModel = ref(generateFormModel())
   const pagination: Pagination = reactive({
     current: 1,
-    pageSize: 10
+    pageSize: 10,
+    total: 0
   })
   const contentTypeOptions = computed<Options[]>(() => [
     {

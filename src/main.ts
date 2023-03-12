@@ -8,6 +8,8 @@ import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import '@/styles/elReset.scss'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
+// 引入国际化
+import i18n from './locale'
 // 引入路由
 import router from './router'
 // 引入请求拦截配置
@@ -24,6 +26,7 @@ for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
   app.component(key, component)
 }
 app.use(ElementPlus)
+app.use(i18n)
 app.use(router)
 app.use(store)
 app.mount('#app')
