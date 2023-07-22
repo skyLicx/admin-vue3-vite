@@ -39,13 +39,13 @@ export default function useMenuTree() {
         const subItem = travel(element.children, layer + 1)
 
         // 如果只有一个子路由则不显示根路由
-        if (
-          element.children.length === 1 &&
-          !element.meta?.isAlwaysShow &&
-          layer < 1
-        ) {
-          return element.children[0]
-        }
+        // if (
+        //   element.children.length === 1 &&
+        //   !element.meta?.isAlwaysShow &&
+        //   layer < 1
+        // ) {
+        //   return element.children[0]
+        // }
         if (subItem.length) {
           element.children = subItem
           return element

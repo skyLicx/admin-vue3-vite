@@ -1,8 +1,8 @@
 import type { RouteLocationNormalized } from 'vue-router'
 import { defineStore } from 'pinia'
-import { TabBarState, TagProps } from './types'
+import { TabBarState, TabProps } from './types'
 
-const formatTag = (route: RouteLocationNormalized): TagProps => {
+const formatTab = (route: RouteLocationNormalized): TabProps => {
   const { name, meta, fullPath, query } = route
   return {
     // 标题
@@ -21,7 +21,7 @@ const useTabBarStore = defineStore('tabBar', {
     // 需要缓存的路由标签列表
     cacheTabList: new Set(),
     // 标签列表
-    tagList: [
+    tabList: [
       // 根据需要设置第一个标签元素
       // {
       //   title: '基础数据',
@@ -33,8 +33,8 @@ const useTabBarStore = defineStore('tabBar', {
 
   getters: {
     // 获取标签列表
-    getTabList(): TagProps[] {
-      return this.tagList
+    getTabList(): TabProps[] {
+      return this.tabList
     },
     // 获取需要缓存的路由标签列表
     getCacheList(): string[] {
@@ -45,16 +45,16 @@ const useTabBarStore = defineStore('tabBar', {
   actions: {
     // 增加标签
     updateTabList(route: RouteLocationNormalized) {
-      this.tagList.push(formatTag(route))
+      this.tabList.push(formatTab(route))
       // 如果需要缓存 则增加name
       if (!route.meta.ignoreCache) {
         this.cacheTabList.add(route.name as string)
       }
     },
     // 删除标签
-    deleteTag(idx: number, tag: TagProps) {
-      this.tagList.splice(idx, 1)
-      this.cacheTabList.delete(tag.name)
+    deleteTab(targetName: string) {
+      this.tabList = this.tabList.filter((tab) => tab.name !== targetName)
+      this.cacheTabList.delete(targetName)
     }
   }
 })
