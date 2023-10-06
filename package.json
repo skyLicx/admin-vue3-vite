@@ -1,6 +1,6 @@
 {
   "name": "admin-vue3-vite",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "element-plus": "^2.2.32",
     "mockjs": "^1.1.0",
     "pinia": "^2.0.32",
+    "print-js": "^1.6.0",
     "vue": "^3.2.45",
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.1.6"

@@ -51,7 +51,6 @@
   })
 
   const login = async (formEl: FormInstance | undefined) => {
-    console.log(111)
     if (!formEl) return
     await formEl.validate(async (valid, fields) => {
       if (valid) {

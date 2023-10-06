@@ -66,6 +66,22 @@ setupMock({
                 // 不缓存路由
                 ignoreCache: true
               }
+            },
+            {
+              path: '/systemData/print',
+              name: 'Print',
+              component: '/systemData/print/index',
+              meta: {
+                locale: '打印'
+              }
+            },
+            {
+              path: '/systemData/schedule',
+              name: 'Schedule',
+              component: '/systemData/schedule/index',
+              meta: {
+                locale: '时间表'
+              }
             }
           ]
         },
