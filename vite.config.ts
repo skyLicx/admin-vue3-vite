@@ -34,8 +34,14 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      '/api/list': {
+        target: 'https://dog.ceo/api/breeds/1', // 服务器地址
+        ws: true,
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      },
       '/api': {
-        target: 'http://xxx.com', // 服务器地址
+        target: 'https://dog.ceo/api/breeds', // 服务器地址
         ws: true,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
