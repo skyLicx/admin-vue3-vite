@@ -39,6 +39,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
+      // 多个域名时
       '/api/list': {
         target: 'https://dog.ceo/api/breeds/1', // 服务器地址
         ws: true,
