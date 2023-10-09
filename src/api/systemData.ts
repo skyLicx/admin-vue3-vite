@@ -24,3 +24,7 @@ export interface PolicyListRes {
 export function queryPolicyList(data: PolicyParams) {
   return axios.post<PolicyListRes>('/mock/list/policy', data)
 }
+
+export function getPicList() {
+  return axios.get('/list/all')
+}

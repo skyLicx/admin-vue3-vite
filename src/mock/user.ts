@@ -74,14 +74,6 @@ setupMock({
               meta: {
                 locale: '打印'
               }
-            },
-            {
-              path: '/systemData/schedule',
-              name: 'Schedule',
-              component: '/systemData/schedule/index',
-              meta: {
-                locale: '时间表'
-              }
             }
           ]
         },
