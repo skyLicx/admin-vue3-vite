@@ -26,5 +26,5 @@ export function queryPolicyList(data: PolicyParams) {
 }
 
 export function getPicList() {
-  return axios.get('/list/all')
+  return axios.get('/breeds/list/all')
 }

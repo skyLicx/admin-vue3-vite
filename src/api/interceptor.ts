@@ -28,7 +28,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   (response: AxiosResponse<HttpResponse>) => {
     const res = response.data
-    if (res.code !== 200) {
+    if (res.code && res.code !== 200) {
       ElMessage({
         message: res.msg || 'Error',
         type: 'error'

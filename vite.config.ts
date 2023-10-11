@@ -40,14 +40,14 @@ export default defineConfig({
   server: {
     proxy: {
       // 多个域名时
-      '/api/list': {
-        target: 'https://dog.ceo/api/breeds', // 服务器地址
+      '/api/breeds': {
+        target: 'https://dog.ceo/api', // 服务器地址
         ws: true,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       },
       '/api': {
-        target: 'https://dog.ceo/api/breeds', // 服务器地址
+        target: 'https://randomuser.me/api', // 服务器地址
         ws: true,
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
