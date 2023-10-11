@@ -1,7 +1,7 @@
 import { DEFAULT_LAYOUT } from '../base'
 import { AppRouteRecordRaw } from '../types'
 
-const TESTPAGE: AppRouteRecordRaw = {
+const MULTILEVEL: AppRouteRecordRaw = {
   path: '/level1',
   name: 'level1',
   component: DEFAULT_LAYOUT,
@@ -14,7 +14,7 @@ const TESTPAGE: AppRouteRecordRaw = {
     {
       path: 'level2',
       name: 'level2',
-      component: () => import('@/views/testPage/index.vue'),
+      component: () => import('@/views/multiLevel/index.vue'),
       meta: {
         locale: 'level2'
       },
@@ -22,7 +22,7 @@ const TESTPAGE: AppRouteRecordRaw = {
         {
           path: 'level3-1',
           name: 'level3-1',
-          component: () => import('@/views/testPage/index2.vue'),
+          component: () => import('@/views/multiLevel/index2.vue'),
           meta: {
             locale: 'level3-1'
           }
@@ -32,4 +32,4 @@ const TESTPAGE: AppRouteRecordRaw = {
   ]
 }
 
-export default TESTPAGE
+export default MULTILEVEL
