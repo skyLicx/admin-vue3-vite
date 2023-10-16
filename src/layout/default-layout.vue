@@ -55,7 +55,6 @@
       flex-direction: column;
     }
     .app-main {
-      padding: 20px;
       flex: 1;
     }
   }

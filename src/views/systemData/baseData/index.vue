@@ -245,11 +245,8 @@
   .container {
     padding: 20px;
     background-color: #fff;
-    display: flex;
-    flex-direction: column;
   }
   .el-table {
     width: 100%;
-    height: 346px;
   }
 </style>
