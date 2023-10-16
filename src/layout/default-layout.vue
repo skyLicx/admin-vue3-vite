@@ -17,6 +17,7 @@
           </section>
         </el-scrollbar>
       </el-main>
+      <!-- <el-footer>Footer</el-footer> -->
     </el-container>
   </el-container>
 </template>
@@ -48,19 +49,16 @@
       padding: 0;
       background-color: $bg;
     }
-    :deep(.el-scrollbar__wrap) {
-      display: flex;
-      flex-direction: column;
-    }
     :deep(.el-scrollbar__view) {
-      flex: 1;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
     }
     .app-main {
-      flex: 1;
       padding: 20px;
-      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
   }
 </style>
