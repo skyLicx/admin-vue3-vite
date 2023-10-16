@@ -38,6 +38,7 @@ export default function setupServerPermissionGuard(router: Router) {
       })
       next({ ...to, replace: true })
     } else {
+      console.log(router, 'router')
       next()
     }
   })
